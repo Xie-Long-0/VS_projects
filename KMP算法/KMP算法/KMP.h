@@ -24,9 +24,8 @@ using namespace std;
 vector<int> getNext(const string sub)
 {
 	int len = sub.length();
-	vector<int> next(len + 4);
-	next.at(0) = 0;
-	next.at(1) = 0;								//初始化
+	vector<int> next;
+	next.resize(len, 0);					//用resize初始化
 	int k = 0;
 	for (int i = 1; i < len; i++)
 	{
