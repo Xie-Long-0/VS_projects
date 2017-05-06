@@ -114,8 +114,7 @@
     <ClCompile Include="STL_classWorker.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sList.h" />
-    <ClInclude Include="vList.h" />
+    <ClInclude Include="vlist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

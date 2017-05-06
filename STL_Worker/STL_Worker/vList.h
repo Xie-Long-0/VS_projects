@@ -15,67 +15,67 @@ class vList
 	vector<Worker> node;
 public:
 	vList() {}
-	vList(Worker p) { node.push_back(p); }
-	vList(int n, Worker p) { node.resize(n, p); }
+	vList(Worker &p) { node.push_back(p); }
+	vList(const int n, Worker &p) { node.resize(n, p); }
 	~vList() { node.clear(); }
-	void AddNode(Worker p);								//添加节点
-	bool InsertNode(int pos, Worker p);				//插入节点
-	bool DeleteNode(int pos);								//删除某个节点
-	bool DeleteNode(int beg, int end);					//删除某个区间的节点
-	int FindNode(Worker p);									//查找节点
+	void AddNode(Worker &p);							//添加节点
+	void InsertNode(const int pos, Worker &p);	//插入节点
+	const int DeleteNode(const int pos);						//删除某个节点
+	const int DeleteNode(int beg, int end);					//删除某个区间的节点
+	const int FindNode(const Worker p);						//查找节点
 	bool Swap(int pos1, int pos2);						//交换两个节点
+	void Swap(vList &_Right);			//交换两个容器全部元素
 	bool isEmpty();							//判断是否为空
 	void Clear();									//清空节点
 };
 
-inline void vList::AddNode(Worker p)
+inline void vList::AddNode(Worker &p)
 {
 	node.push_back(p);
 }
 
-bool vList::InsertNode(int pos, Worker p)
+void vList::InsertNode(const int pos, Worker &p)
 {
 	vector<Worker>::iterator iter = node.begin();
 	for (int i = 0; i < pos; i++, iter++)
 	{
 		if (iter == node.end())
-			return false;
+			return;
 	}
 	node.insert(iter, p);
-	return true;
 }
 
-bool vList::DeleteNode(int pos)
+const int vList::DeleteNode(int pos)
 {
 	vector<Worker>::iterator iter = node.begin();
 	for (int i = 0; i < pos; i++, iter++)
 	{
 		if (iter == node.end())
-			return false;
+			return -1;
 	}
 	node.erase(iter);
-	return true;
+	return pos;
 }
 
-bool vList::DeleteNode(int beg, int end)
+const int vList::DeleteNode(int beg, int end)
 {
 	vector<Worker>::iterator iterbeg = node.begin();
 	for (int i = 0; i < beg; i++, iterbeg++)
 	{
 		if (iterbeg == node.end())
-			return false;
+			return -1;
 	}
 	vector<Worker>::iterator iterend = iterbeg;
 	for (int i = beg; i < end; i++, iterend++)
 	{
 		if (iterend == node.end())
-			return false;
+			return -1;
 	}
 	node.erase(iterbeg, iterend);
-	return true;
+	return end;
 }
 
-int vList::FindNode(Worker p)
+const int vList::FindNode(const Worker p)
 {
 	int pos, len = node.size();
 	for (pos = 0; pos < len; pos++)
@@ -95,6 +95,11 @@ inline bool vList::Swap(int pos1, int pos2)
 	node.at(pos1) = node.at(pos2);
 	node.at(pos2) = p;
 	return true;
+}
+
+inline void vList::Swap(vList & _Right)
+{
+	node.swap(_Right.node);
 }
 
 inline bool vList::isEmpty()
