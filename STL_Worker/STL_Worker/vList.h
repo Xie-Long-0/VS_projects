@@ -12,99 +12,137 @@ class Worker;
 
 class vList
 {
-	vector<Worker> node;
+	vector<Worker> elem;
+	unsigned int size;
 public:
-	vList() {}
-	vList(Worker &p) { node.push_back(p); }
-	vList(const int n, Worker &p) { node.resize(n, p); }
-	~vList() { node.clear(); }
-	void AddNode(Worker &p);							//添加节点
-	void InsertNode(const int pos, Worker &p);	//插入节点
-	const int DeleteNode(const int pos);						//删除某个节点
-	const int DeleteNode(int beg, int end);					//删除某个区间的节点
-	const int FindNode(const Worker p);						//查找节点
-	bool Swap(int pos1, int pos2);						//交换两个节点
+	vList() { Init(); }
+	vList(Worker &p) { Init(); elem.push_back(p); }
+	vList(const int n, Worker &p) { Init(n); elem.resize(n, p); }
+	~vList() { elem.clear(); }
+	void Init();						//初始化
+	void Init(int n);
+	void Push_front(Worker &p);						//在表头添加元素
+	void Push_back(Worker &p);						//在链尾添加元素
+	void InsertNode(const int pos, Worker &p);			//插入元素
+	const int DeleteNode(const int pos);						//删除某个元素
+	const int DeleteNode(int beg, int end);					//删除某个区间的元素
+	const int FindNode(Worker p);						//查找元素
 	void Swap(vList &_Right);			//交换两个容器全部元素
+	Worker &Front();							//返回第一个元素
+	Worker &Back();							//返回最后一个元素
+	void Pop_front();							//删除第一个元素
+	void Pop_back();							//删除最后一个元素
+	const int Size();							//返回元素个数
 	bool isEmpty();							//判断是否为空
-	void Clear();									//清空节点
+	void Clear();									//清空元素
 };
 
-inline void vList::AddNode(Worker &p)
+inline void vList::Init()
 {
-	node.push_back(p);
+	size = 0;
+}
+
+inline void vList::Init(int n)
+{
+	size = n;
+}
+
+inline void vList::Push_front(Worker & p)
+{
+	elem.insert(elem.begin(), p);
+}
+
+inline void vList::Push_back(Worker &p)
+{
+	elem.push_back(p);
 }
 
 void vList::InsertNode(const int pos, Worker &p)
 {
-	vector<Worker>::iterator iter = node.begin();
+	vector<Worker>::iterator iter = elem.begin();
 	for (int i = 0; i < pos; i++, iter++)
 	{
-		if (iter == node.end())
+		if (iter == elem.end())
 			return;
 	}
-	node.insert(iter, p);
+	elem.insert(iter, p);
 }
 
 const int vList::DeleteNode(int pos)
 {
-	vector<Worker>::iterator iter = node.begin();
+	vector<Worker>::iterator iter = elem.begin();
 	for (int i = 0; i < pos; i++, iter++)
 	{
-		if (iter == node.end())
+		if (iter == elem.end())
 			return -1;
 	}
-	node.erase(iter);
+	elem.erase(iter);
 	return pos;
 }
 
 const int vList::DeleteNode(int beg, int end)
 {
-	vector<Worker>::iterator iterbeg = node.begin();
+	vector<Worker>::iterator iterbeg = elem.begin();
 	for (int i = 0; i < beg; i++, iterbeg++)
 	{
-		if (iterbeg == node.end())
+		if (iterbeg == elem.end())
 			return -1;
 	}
 	vector<Worker>::iterator iterend = iterbeg;
 	for (int i = beg; i < end; i++, iterend++)
 	{
-		if (iterend == node.end())
+		if (iterend == elem.end())
 			return -1;
 	}
-	node.erase(iterbeg, iterend);
+	elem.erase(iterbeg, iterend);
 	return end;
 }
 
-const int vList::FindNode(const Worker p)
+const int vList::FindNode(Worker p)
 {
-	int pos, len = node.size();
+	Worker temp = p;
+	int pos, len = elem.size();
 	for (pos = 0; pos < len; pos++)
 	{
-		if (node.at(pos) == p)
-			return pos;					//返回找到的节点位置
+		if (temp.Equl(p, elem.at(pos)))
+			return pos;					//返回找到的元素位置
 	}
 	return -1;
 }
 
-inline bool vList::Swap(int pos1, int pos2)
-{
-	int len = node.size();
-	if (pos1 > len || pos2 > len)
-		return false;
-	Worker p = node.at(pos1);
-	node.at(pos1) = node.at(pos2);
-	node.at(pos2) = p;
-	return true;
-}
-
 inline void vList::Swap(vList & _Right)
 {
-	node.swap(_Right.node);
+	elem.swap(_Right.elem);
+}
+
+inline Worker & vList::Front()
+{
+	return elem.front();
+}
+
+inline Worker & vList::Back()
+{
+	return elem.back();
+}
+
+inline void vList::Pop_front()
+{
+	elem.erase(elem.begin());
+}
+
+inline void vList::Pop_back()
+{
+	elem.pop_back();
+}
+
+inline const int vList::Size()
+{
+	return size;
 }
 
 inline bool vList::isEmpty()
 {
-	if (node.begin() == node.end())
+	if (elem.begin() == elem.end())
 		return true;
 	else
 		return false;
@@ -112,7 +150,7 @@ inline bool vList::isEmpty()
 
 inline void vList::Clear()
 {
-	node.clear();
+	elem.clear();
 }
 
 
