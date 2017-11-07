@@ -6,7 +6,7 @@
 顺便用上vector
 ****************************/
 
-#pragma once
+//#pragma once
 #ifndef _KMP_H_
 #define _KMP_H_
 

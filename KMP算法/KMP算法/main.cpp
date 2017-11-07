@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include "KMP.h"
 
@@ -11,13 +11,13 @@ int main()
 {
 	string T = "ABCBABCABDABCD";
 	string S = "ABCAB";
-	cout << "Text：" << T << endl;
-	cout << "Sub：" << S << endl;
+	cout << "Text=" << T << endl;
+	cout << "Sub=" << S << endl;
 	int result = kmpSearch(T, S);
 	if (result == False)
 		cout << "找不到该字符串" << endl;
 	else
 		cout << "该字符串第一次出现的位置是：" << result + 1 << endl;
-	system("pause");
+	getchar();
 	return 0;
 }
