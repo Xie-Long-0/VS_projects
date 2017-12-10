@@ -16,7 +16,7 @@ int getLength(PolyList H);		//获取长度
 void Poly_sort(PolyList H);			//多项式按指数排序
 PolyList Poly_merge(PolyList Ha, PolyList Hb);
 void Poly_print(PolyList H);		//输出多项式
-void Poly_Delete(PolyList H);
+void Poly_Destroy(PolyList H);
 
 
 #endif // POLYNOMIAL_H_

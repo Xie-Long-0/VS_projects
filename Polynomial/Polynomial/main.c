@@ -9,7 +9,7 @@ int main()
 	printf("多项式相加：\n");
 	ha = Poly_merge(ha, hb);
 	Poly_print(ha);
-	Poly_Delete(ha);
+	Poly_Destroy(ha);
 	getchar();
 	getchar();
 	return 0;
