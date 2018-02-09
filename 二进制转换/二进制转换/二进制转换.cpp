@@ -1,10 +1,8 @@
-#include <iostream>
 #include <string>
 #include <cmath>
 #include "SQtemplate.h"
 
 using namespace std;
-
 
 /*** 二进制转十进制 ***/
 void Bin2Dec(string num)
@@ -12,13 +10,13 @@ void Bin2Dec(string num)
 	if (num[0] == '-')
 	{
 		num = num.erase(0, 1);
-		putchar('-');
+		printf("-");
 	}
 	while (num[0] == '0')
 		num = num.erase(0, 1);
 
-	Queue<char> intbit;								//整数二进制位存放队列
-	Queue<char> floatbit;							//小数二进制位存放队列
+	SeqQueue<char> intbit;						//整数二进制位存放队列
+	SeqQueue<char> floatbit;					//小数二进制位存放队列
 	char getint;
 	char getfloat;
 	long integer = 0;
@@ -41,7 +39,7 @@ void Bin2Dec(string num)
 	}
 	while (!intbit.isEmpty())
 	{
-		if (intbit.Pop(getint))						//转换成十进制
+		if (intbit.Pop(getint))					//转换成十进制
 			integer += (getint - '0')*pow(2, intbit.Length());
 		else
 			break;
@@ -50,7 +48,7 @@ void Bin2Dec(string num)
 
 	if (num[0] == '.')
 	{
-		putchar('.');										//如果没有小数则结束
+		printf(".");							//如果没有小数则结束
 		num = num.erase(0, 1);
 	}
 	else
@@ -90,12 +88,12 @@ void Dec2Bin(double num)
 	if (num < 0)
 	{
 		num = -num;
-		putchar('-');
+		printf("-");
 	}
 	long integer  = (long)num;				//整数部分
-	double decimal = num - integer;		//小数部分
-	Stack<int> mod;								//整数取余存放堆栈
-	Queue<int> bit;									//小数取进位存放队列
+	double decimal = num - integer;			//小数部分
+	SeqStack<int> mod;						//整数取余存放堆栈
+	SeqQueue<int> bit;						//小数取进位存放队列
 	int getmod;
 	int getbit;
 
@@ -125,7 +123,7 @@ void Dec2Bin(double num)
 	}
 	if (bit.isEmpty())
 		return;
-	putchar('.');
+	printf(".");
 	while (!bit.isEmpty())
 	{
 		if (bit.Pop(getbit))							//顺序输出
@@ -141,7 +139,7 @@ int main()
 {
 	string bin = "11100.1001";
 	double dec = 28.5625;
-	//cin >> dec;
+	//cin
 	Bin2Dec(bin);
 	cout << endl;
 	Dec2Bin(dec);
