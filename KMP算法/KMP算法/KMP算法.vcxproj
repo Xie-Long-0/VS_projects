@@ -122,9 +122,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="KMP.h" />
+    <ClInclude Include="kmp-algo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="kmp-algo.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
