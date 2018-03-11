@@ -1,2 +1,2 @@
 # VSprojects
-Visual Studio
+Learning C and C++ via Visual Studio
