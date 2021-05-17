@@ -18,12 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="kmp-algo.cpp">
+    <ClCompile Include="kmp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kmp-algo.h">
+    <ClInclude Include="kmp.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
