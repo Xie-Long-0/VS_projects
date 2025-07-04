@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="/">
+    <file>icons/dash-square.svg</file>
+    <file>icons/dash.svg</file>
+    <file>icons/x-square.svg</file>
+    <file>icons/x.svg</file>
+    <file>icons/close_black_48dp.svg</file>
+    <file>icons/close_fullscreen_black_48dp.svg</file>
+    <file>icons/close_fullscreen_white_48dp.svg</file>
+    <file>icons/close_white_48dp.svg</file>
+    <file>icons/minimize_black_48dp.svg</file>
+    <file>icons/minimize_white_48dp.svg</file>
+    <file>icons/open_in_full_black_48dp.svg</file>
+    <file>icons/open_in_full_white_48dp.svg</file>
+  </qresource>
+</RCC>
